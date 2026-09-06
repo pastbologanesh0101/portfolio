@@ -9,35 +9,60 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="wrap">
-    <header class="intro">
-      <div class="avatar" aria-hidden="true">P</div>
-      <h1>Hi, I'm <span class="accent">Pranav</span>.</h1>
+  <!-- animated background -->
+  <div class="aurora" aria-hidden="true">
+    <span class="blob blob-1"></span>
+    <span class="blob blob-2"></span>
+    <span class="blob blob-3"></span>
+    <div class="grid"></div>
+  </div>
+
+  <!-- custom cursor -->
+  <div class="cursor-ring" aria-hidden="true"></div>
+  <div class="cursor-dot" aria-hidden="true"></div>
+
+  <!-- floating nav -->
+  <nav class="floating-nav" aria-label="Primary">
+    <a href="#top" class="brand" data-cursor>P</a>
+    <div class="nav-links">
+      <a href="#projects" data-cursor>Projects</a>
+      <a href="https://github.com/pastbologanesh0101" target="_blank" rel="noopener" data-cursor>GitHub</a>
+      <a href="mailto:pranav27062007@gmail.com" data-cursor>Email</a>
+    </div>
+  </nav>
+
+  <main class="wrap" id="top">
+    <header class="intro reveal">
+      <p class="kicker">Developer · Student · Tinkerer</p>
+      <h1>Hi, I'm <span class="grad">Pranav</span>.</h1>
       <p class="tagline">
-        I build things for the web. Student, developer, and perpetual tinkerer.
+        I build things for the web — small tools, clean interfaces, and the
+        occasional experiment that gets out of hand.
       </p>
-      <nav class="links">
-        <a href="https://github.com/vishwanathantamizharasan" target="_blank" rel="noopener">GitHub</a>
-        <a href="mailto:pranav27062007@gmail.com">Email</a>
-      </nav>
+      <div class="cta">
+        <a class="btn primary" href="#projects" data-cursor>See my work</a>
+        <a class="btn ghost" href="mailto:pranav27062007@gmail.com" data-cursor>Get in touch</a>
+      </div>
     </header>
 
-    <section class="projects">
-      <h2>Projects</h2>
+    <section class="projects" id="projects">
+      <h2 class="reveal">Projects</h2>
       <ul>
-        <li>
+        <li class="card reveal" data-cursor>
           <h3>Portfolio site</h3>
-          <p>This page. A zero-dependency static site deployed on Vercel.</p>
+          <p>This page. A zero-dependency static site with a custom cursor and an aurora background, deployed on Vercel.</p>
+          <span class="tag">HTML · CSS · JS</span>
         </li>
-        <li>
+        <li class="card reveal" data-cursor>
           <h3>Coming soon</h3>
-          <p>More projects on the way. Check my GitHub in the meantime.</p>
+          <p>More projects on the way. Check my GitHub in the meantime for works in progress.</p>
+          <span class="tag">In progress</span>
         </li>
       </ul>
     </section>
 
-    <footer>
-      <p>&copy; <span id="year"></span> Pranav. Built with plain HTML &amp; CSS.</p>
+    <footer class="reveal">
+      <p>&copy; <span id="year"></span> Pranav · built with plain HTML &amp; CSS</p>
     </footer>
   </main>
 
