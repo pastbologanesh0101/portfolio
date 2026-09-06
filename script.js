@@ -55,11 +55,14 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 // ---------- scroll reveal ----------
 (function scrollReveal() {
-  const items = document.querySelectorAll(".reveal");
+  const items = Array.from(document.querySelectorAll(".reveal"));
+  const revealAll = () => items.forEach((el) => el.classList.add("in"));
+
   if (!("IntersectionObserver" in window)) {
-    items.forEach((el) => el.classList.add("in"));
+    revealAll();
     return;
   }
+
   const io = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -69,7 +72,20 @@ document.getElementById("year").textContent = new Date().getFullYear();
         }
       });
     },
-    { threshold: 0.15 }
+    { threshold: 0.12 }
   );
   items.forEach((el) => io.observe(el));
+
+  // Reveal anything already on screen right away (covers first paint).
+  const revealInView = () => {
+    items.forEach((el) => {
+      const r = el.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) el.classList.add("in");
+    });
+  };
+  window.addEventListener("load", revealInView);
+  revealInView();
+
+  // Safety net: never leave content hidden (e.g. background tabs pause IO).
+  setTimeout(revealAll, 2500);
 })();
